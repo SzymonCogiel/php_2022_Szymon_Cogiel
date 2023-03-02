@@ -1,3 +1,9 @@
+<form action="index.php" method="get">
+    User: <input type="text" id="user" name="user"><br>
+    Password: <input type="password" id="password" name="password"><br>
+    <input type="submit" id="Login" value="Login">
+</form>
+
 <?php
 $user = $_GET["user"];
 $password = $_GET["password"];
