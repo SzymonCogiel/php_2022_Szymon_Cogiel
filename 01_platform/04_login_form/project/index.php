@@ -1,24 +1,20 @@
-<form action="index.php" method="get">
-    User: <input type="text" id="user" name="user"><br>
-    Password: <input type="password" id="password" name="password"><br>
-    <input type="submit" id="Login" value="Login">
-</form>
-
 <?php
-$user = $_GET["user"];
-$password = $_GET["password"];
+if (isset($_GET['Login'])) {
+    if (empty($_GET['user']) || empty($_GET['password'])) {
+        echo "<p>EMPTY</p>";
+    } elseif ($_GET['user'] == "foo" && $_GET['password'] == "foo123") {
+        echo "<p>OK</p>";
+    } else {
+        echo "<p>ERROR</p>";
+    }
 
-if ($user=="" or $password=="")
-{
-    echo "<p>EMPTY</p>";
-    return "EMPTY";
-}
-if ($user=="foo" and $password=="foo123")
-{
-    echo "<p>OK</p>";
-    return "OK";
-}
-{
-    echo "<p>ERROR</p>";
-    return "ERROR";
-}
+} else { ?>
+    <form method="get">
+        <label>User:</label>
+        <input type="text" name="user"><br>
+        <label>Password:</label>
+        <input type="password" name="password"><br>
+        <button type="submit" name="Login">Login</button>
+    </form>
+<?php }
+?>
