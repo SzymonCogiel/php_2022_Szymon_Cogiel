@@ -14,7 +14,6 @@ $color = $_COOKIE["color"] ?? "gray";
 
 if(isset($_POST["color"]))
 {
-    //$color =  $_POST['color'] == "" ? $_COOKIE["color"] : $_POST["color"];
     $color = $_POST["color"];
     setcookie("color", $color);
 }
@@ -113,19 +112,6 @@ if(isset($_POST["color"]))
 
     ?>
 
-    <!--
-    <div>
-        <a class="block gray" href="?x=0&z=1"></a>
-        <a class="block gray" href="?x=1&z=1"></a>
-        <a class="block gray" href="?x=2&z=1"></a>
-    </div>
-    <div>
-        <a class="block gray" href="?x=0&z=2"></a>
-        <a class="block gray" href="?x=1&z=2"></a>
-        <a class="block gray" href="?x=2&z=2"></a>
-    </div>
-    -->
-
     <br/>
 
     <form method="post">
@@ -200,30 +186,53 @@ function Bresenham($x1, $y1, $x2, $y2)
     }
 
     $col[$x][$y] = "white";
-    $is_dx_greater = $dx > $dy;
-    $ai = ($is_dx_greater ? ($dy - $dx) * 2 : ( $dx - $dy ) * 2);
-    $bi = ($is_dx_greater ? $dx * 2 : $dy * 2);
-    $d = ($is_dx_greater ? $bi - $dx : $bi - $dy);
 
-    while (($x != $x2) || ($y != $y2))
+    if ($dx > $dy)
     {
+        $ai = ($dy - $dx) * 2;
+        $bi = $dy * 2;
+        $d = $bi - $dx;
 
-        if ($d >= 0)
+        while ($x != $x2)
         {
-            $x += $xi;
-            $y += $yi;
-            $d += $ai;
-        }
-        else
-        {
-            $d += $bi;
-            if ($is_dx_greater) {
+
+            if ($d >= 0)
+            {
                 $x += $xi;
-            } else {
+                $y += $yi;
+                $d += $ai;
+            }
+            else
+            {
+                $d += $bi;
+                $x += $xi;
+            }
+            $col[$x][$y] = "white";
+        }
+    }
+
+    else
+    {
+        $ai = ( $dx - $dy ) * 2;
+        $bi = $dx * 2;
+        $d = $bi - $dy;
+
+        while ($y != $y2)
+        {
+
+            if ($d >= 0)
+            {
+                $x += $xi;
+                $y += $yi;
+                $d += $ai;
+            }
+            else
+            {
+                $d += $bi;
                 $y += $yi;
             }
+            $col[$x][$y] = "white";
         }
-        $col[$x][$y] = "white";
     }
 }
 
