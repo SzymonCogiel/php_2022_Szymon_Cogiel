@@ -1,19 +1,13 @@
-<html lang="en">
-<head>
-    <title>Pretty URL</title>
+<?php
+if($_SERVER['REQUEST_URI'] == '/')
+    $_SERVER['REQUEST_URI'] = '/home';
 
-    <style type="text/css">
-        .error {
-            color: red;
-        }
-    </style>
-</head>
-<body>
-<div>
-    <a href="index.php">Home</a>
-    <a href="about.php">About</a>
-    <a href="users.php">Users</a>
-</div>
-<p>Welcome on homepage!</p>
-</body>
-</html>
+$parts = explode('/', $_SERVER['REQUEST_URI']);
+$view = "/" . $parts[1];
+if($parts[1] == 'user') {
+    $id = $parts[2];
+    if ($id < 1 or $id > 3) {
+        $view = "/404";
+    }
+}
+include "../views/layout.php";
