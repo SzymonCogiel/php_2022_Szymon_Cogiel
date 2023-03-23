@@ -1,5 +1,7 @@
 <?php
 
+use Foo\Bar\Baz;
+
 class App
 {
     public function run(): void {
@@ -8,10 +10,14 @@ class App
 
         $dummy = new Dummy("key");
 
+        $baz = new Baz();
+        $baz -> test();
+
+        // zwraca bytes objekt zamiast
         $s = serialize($dummy);
 
         // save to file
-
+        file_put_contents('test.txt', $s);
         // read from file
 
         $o = unserialize($s);
