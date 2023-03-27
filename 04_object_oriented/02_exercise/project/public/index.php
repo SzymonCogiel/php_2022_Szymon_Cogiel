@@ -1,5 +1,8 @@
 <?php
 
+const SIZE = 4;
+
+
 // Error reporting
 
 error_reporting(-1);

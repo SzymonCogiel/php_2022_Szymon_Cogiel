@@ -6,8 +6,7 @@ use Concept\Distinguishable;
 
 interface Storage
 {
-    public function store(Distinguishable $distinguishable = null): void;
-
+    public function store(Distinguishable $distinguishable) : void;
     /**
      * @return Distinguishable[]
      */

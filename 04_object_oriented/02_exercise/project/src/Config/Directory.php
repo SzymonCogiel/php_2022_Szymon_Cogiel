@@ -12,19 +12,23 @@ class Directory
        	self::$root = $root;
     }
 
-    public static function root(): string{
-        return '';
+    public static function root(): string
+    {
+        return self::$root;
     }
 
-    public static function storage(): string{
-        return '';
+    public static function storage(): string
+    {
+        return "../storage/";
     }
 
-    public static function view(): string{
-        return '';
+    public static function view(): string
+    {
+        throw new \Error("Directory Views not exists");
     }
 
-    public static function src(): string{
-        return '';
+    public static function src(): string
+    {
+        return "../src/";
     }
 }

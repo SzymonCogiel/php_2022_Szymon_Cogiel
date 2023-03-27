@@ -1,30 +1,26 @@
 <?php
 
-use Foo\Bar\Baz;
+use Widget\Widget;
 
 class App
 {
-    public function run(): void {
-        echo "Hello from App.php!";
-        echo "<br/>";
+    public function run(): void
+    {
+        $storage = new \Storage\FileStorage();
+        for($i = 1; $i<=SIZE; $i++ )
+        {
+            $storage->store(new \Widget\Button($i));
+            $storage->store(new \Widget\Link($i));
+        }
+        foreach($storage->loadAll() as $elem)
+        {
+            if($elem instanceof Widget)
+                $this->render($elem);
+        }
 
-        $dummy = new Dummy("key");
-
-        $baz = new Baz();
-        $baz -> test();
-
-        // zwraca bytes objekt zamiast
-        $s = serialize($dummy);
-
-        // save to file
-        file_put_contents('test.txt', $s);
-        // read from file
-
-        $o = unserialize($s);
-
-        if (!$o instanceof Dummy)
-            exit("Wring type!");
-
-        $o->test();
+    }
+    private function render (Widget $widget): void
+    {
+        $widget->draw();
     }
 }
