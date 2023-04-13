@@ -1,0 +1,22 @@
+{
+    "name": "ddgg/demo",
+    "description": "Test app.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damian Gwiżdż",
+            "email": "damian.gwizdz@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">8.0",
+        "predis/predis": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
