@@ -4,6 +4,7 @@ use Storage\Storage;
 use Widget\Widget;
 use Widget\Link;
 use Widget\Button;
+use Instantiator\Instantiator;
 
 class App
 {
@@ -38,5 +39,11 @@ class App
     private function render(Widget $widget): void
     {
         $widget->draw();
+    }
+
+    public function createNewLink(): Link
+    {
+        $instantiator = new Instantiator();
+        return $instantiator->instantiate(Link::class);
     }
 }

@@ -1,0 +1,14 @@
+{
+    "name": "root/02_exercise",
+    "description": "Php env packages",
+    "type": "project",
+    "require": {
+        "doctrine/instantiator": "^2.0.0"
+    },
+    "authors": [
+        {
+            "name": "SzymonCogiel",
+            "email": "cogiel@student.agh.edu.pl"
+        }
+    ]
+}
