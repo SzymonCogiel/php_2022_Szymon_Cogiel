@@ -14,11 +14,6 @@ class App
     {
         $fullStorageTypeName = "\\Storage\\$storageTypeName";
 
-<<<<<<< HEAD
-        echo "Test for: $fullStorageTypeName<br/>";
-
-        $storage = new $fullStorageTypeName();
-=======
         try {
             $instantiator = new Instantiator();
             $textPrinter = $instantiator->instantiate(Printer::class);
@@ -26,7 +21,6 @@ class App
         } catch (ExceptionInterface $e) {
             exit("Error creating storage: " . $e->getMessage());
         }
->>>>>>> 10ab1db (final zad 06)
 
         $storage = new $fullStorageTypeName();
 
