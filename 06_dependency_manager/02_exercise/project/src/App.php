@@ -4,6 +4,9 @@ use Storage\Storage;
 use Widget\Widget;
 use Widget\Link;
 use Widget\Button;
+use Doctrine\Instantiator\Instantiator;
+use Printer\Printer;
+use Doctrine\Instantiator\Exception\ExceptionInterface;
 
 class App
 {
@@ -11,13 +14,26 @@ class App
     {
         $fullStorageTypeName = "\\Storage\\$storageTypeName";
 
+<<<<<<< HEAD
         echo "Test for: $fullStorageTypeName<br/>";
+
+        $storage = new $fullStorageTypeName();
+=======
+        try {
+            $instantiator = new Instantiator();
+            $textPrinter = $instantiator->instantiate(Printer::class);
+            $textPrinter->printText("Test for: $fullStorageTypeName<br/>");
+        } catch (ExceptionInterface $e) {
+            exit("Error creating storage: " . $e->getMessage());
+        }
+>>>>>>> 10ab1db (final zad 06)
 
         $storage = new $fullStorageTypeName();
 
         if (!$storage instanceof Storage) {
             exit("Storage type is invalid!");
         }
+
 
         $widgets = [
             new Link(1), new Link(2), new Link(3),
