@@ -2,9 +2,9 @@
 
 namespace Printer;
 
-class Printer 
+class Printer
 {
-    public function printText(string $text): void 
+    public function printText(string $text): void
     {
         echo $text;
     }
