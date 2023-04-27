@@ -19,7 +19,7 @@ class App
             $textPrinter = $instantiator->instantiate(Printer::class);
             $textPrinter->printText("Test for: $fullStorageTypeName<br/>");
         } catch (ExceptionInterface $e) {
-            exit("Error creating storage: " . $e->getMessage());
+            exit("Error creating printer: " . $e->getMessage());
         }
 
         $storage = new $fullStorageTypeName();
