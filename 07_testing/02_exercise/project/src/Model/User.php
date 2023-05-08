@@ -6,7 +6,6 @@ use Exception as ExceptionAlias;
 
 class User extends Model
 {
-
     public bool $confirmed;
     public string|null $token;
     public string $name;
